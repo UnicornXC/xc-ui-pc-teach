@@ -31,7 +31,6 @@
 </template>
 <script>
   import * as courseApi from '../../api/course'
-  import utilApi from '../../../../common/utils'
   import * as systemApi from '../../../../base/api/system'
   export default {
     data () {
@@ -74,7 +73,7 @@
                 this.editLoading = false
                 if (res.success) {
                   this.$message.success('提交成功')
-                  if (this.dotype == '1') {
+                  if (this.dotype === '1') {
                    // 跳转到课程图片
                     this.$router.push({ path: '/course/add/plan/3/1/' + this.courseid })
                   }
@@ -95,10 +94,10 @@
 
       this.courseMarketForm.id = this.courseid
     // 查询字典
-      systemApi.sys_getDictionary('203').then((res) => {
+      systemApi.sysGetDictionary('203').then((res) => {
         this.chargeList = res.dvalue
       })
-      systemApi.sys_getDictionary('204').then((res) => {
+      systemApi.sysGetDictionary('204').then((res) => {
         this.validList = res.dvalue
       })
 

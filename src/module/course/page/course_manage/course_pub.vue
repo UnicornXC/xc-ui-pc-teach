@@ -39,10 +39,7 @@
   </div>
 </template>
 <script>
-  import * as sysConfig from '@/../config/sysConfig'
   import * as courseApi from '../../api/course'
-  import utilApi from '../../../../common/utils'
-  import * as systemApi from '../../../../base/api/system'
   export default{
     data () {
       return {

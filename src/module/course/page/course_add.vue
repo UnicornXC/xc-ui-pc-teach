@@ -39,7 +39,6 @@
 </template>
 <script>
   import * as courseApi from '../api/course'
-  import utilApi from '../../../common/utils'
   import * as systemApi from '../../../base/api/system'
   export default {
     data () {
@@ -103,18 +102,18 @@
     },
     mounted () {
       // 查询课程分类
-      courseApi.category_findlist().then(res => {
+      courseApi.categoryFindlist().then(res => {
         this.categoryList = res.children
         console.log(this.categoryList)
       })
 
       // 查询数据字典
       // 查询课程等级
-      systemApi.sys_getDictionary('200').then(res => {
+      systemApi.sysGetDictionary('200').then(res => {
         this.gradeList = res.dvalue
       })
       // 查询学习模式
-      systemApi.sys_getDictionary('201').then(res => {
+      systemApi.sysGetDictionary('201').then(res => {
         this.studymodelList = res.dvalue
       })
     }

@@ -39,7 +39,6 @@
 </template>
 <script>
   import * as courseApi from '../../api/course'
-  import utilApi from '../../../../common/utils'
   import * as systemApi from '../../../../base/api/system'
   export default {
     data () {
@@ -51,7 +50,7 @@
         editLoading: false,
         props: {
           value: 'id',
-          label: 'label',
+          label: 'name',
           children: 'children'
         },
         categoryList: [],
@@ -95,7 +94,7 @@
               this.courseForm.mt = mt
               this.courseForm.st = st
               let id = this.courseForm.id
-              courseApi.updateCoursebase(id, this.courseForm).then((res) => {
+              courseApi.updateCourseBase(id, this.courseForm).then((res) => {
                 this.editLoading = false
                 if (res.success) {
                   this.$message({
@@ -120,21 +119,21 @@
     },
     mounted () {
       // 查询数据字典字典
-      systemApi.sys_getDictionary('201').then((res) => {
+      systemApi.sysGetDictionary('201').then((res) => {
 //        console.log(res);
         this.studymodelList = res.dvalue
       })
-      systemApi.sys_getDictionary('200').then((res) => {
+      systemApi.sysGetDictionary('200').then((res) => {
         this.gradeList = res.dvalue
       })
     // 取课程分类
-      courseApi.category_findlist({}).then((res) => {
+      courseApi.categoryFindlist({}).then((res) => {
         this.categoryList = res.children
       })
     // 查询课程信息
       // 课程id
       this.courseid = this.$route.params.courseid
-      courseApi.getCoursebaseById(this.courseid).then((res) => {
+      courseApi.getCourseBaseById(this.courseid).then((res) => {
 //          console.log(res);
         this.courseForm = res
         // 课程分类显示，需要两级分类

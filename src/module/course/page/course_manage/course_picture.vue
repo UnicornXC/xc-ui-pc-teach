@@ -17,8 +17,6 @@
 <script>
   import * as sysConfig from '@/../config/sysConfig'
   import * as courseApi from '../../api/course'
-  import utilApi from '../../../../common/utils'
-  import * as systemApi from '../../../../base/api/system'
   export default {
     data () {
       return {
@@ -76,25 +74,11 @@
         }
       },
       // 上传失败执行的钩子方法
-      handleError (err, file, fileList) {
+      handleError (err, _file, _fileList) {
+        console.log(err)
         this.$message.error('上传失败')
       // 清空文件队列
         this.fileList = []
-      },
-      // promise 有三种状态:
-      // 进行中pending
-      // 执行成功 resolve
-      // 执行失败 reject
-      testPromise (i) {
-        return new Promise((resolve, reject) => {
-          if (i < 2) {
-                  // 成功了
-            resolve('成功了')
-          } else {
-                  // 失败了
-            reject(Error('失败了'))
-          }
-        })
       }
     },
     mounted () {
@@ -108,13 +92,6 @@
           this.fileList.push({name: 'pic', url: imgUrl, fileId: res.pic})
         }
       })
-      // 测试调用promise方法，then中写的成功后的回调方法，
-//      this.testPromise(3).then(res=>{
-//          alert(res)
-//      }).catch(res=>{//catch就是执行失败的回调方法
-//          alert("失败了。。。。。")
-//          alert(res)
-//      })
     }
   }
 </script>

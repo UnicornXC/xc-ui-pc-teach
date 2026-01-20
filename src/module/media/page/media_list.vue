@@ -93,19 +93,19 @@
       formatProcessStatus (row, column) {
         var processStatus = row.processStatus
         if (processStatus) {
-          if (processStatus == '303001') {
+          if (processStatus === '303001') {
             return '处理中'
-          } else if (processStatus == '303002') {
+          } else if (processStatus === '303002') {
             return '处理成功'
-          } else if (processStatus == '303003') {
+          } else if (processStatus === '303003') {
             return '处理失败'
-          } else if (processStatus == '303004') {
+          } else if (processStatus === '303004') {
             return '无需处理'
           }
         }
       },
       choose (mediaFile) {
-        if (mediaFile.processStatus != '303002' && mediaFile.processStatus != '303004') {
+        if (mediaFile.processStatus !== '303002' && mediaFile.processStatus !== '303004') {
           this.$message.error('该文件未处理，不允许选择')
           return
         }
@@ -122,7 +122,7 @@
       },
       process (id) {
 //        console.log(id)
-        mediaApi.media_process(id).then((res) => {
+        mediaApi.mediaProcess(id).then((res) => {
           console.log(res)
           if (res.success) {
             this.$message.success('开始处理，请稍后查看处理结果')
@@ -132,7 +132,7 @@
         })
       },
       query () {
-        mediaApi.media_list(this.params.page, this.params.size, this.params).then((res) => {
+        mediaApi.mediaList(this.params.page, this.params.size, this.params).then((res) => {
           console.log(res)
           this.total = res.queryResult.total
           this.list = res.queryResult.list

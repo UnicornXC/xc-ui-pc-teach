@@ -61,11 +61,10 @@
   </div>
 </template>
 <script>
-  let id = 1000
   import * as courseApi from '../../api/course'
-  import utilApi from '../../../../common/utils'
-  import * as systemApi from '../../../../base/api/system'
   import mediaList from '@/module/media/page/media_list.vue'
+
+  let id = 1000
 
   export default {
     components: {
@@ -155,7 +154,7 @@
           }
         })
       },
-  // 重置表单
+      // 重置表单
       resetForm () {
         this.teachplanActive = {}
       },
