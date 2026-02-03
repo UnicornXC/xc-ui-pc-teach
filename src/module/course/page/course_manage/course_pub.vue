@@ -74,6 +74,7 @@
             this.$message.error(res.message)
           }
         })
+        this.getCourseView()
       },
       getCourseView () {
         courseApi.findCourseView(this.courseid).then(res => {
@@ -83,7 +84,6 @@
           }
         })
       }
-
     },
     mounted () {
       // 课程id
